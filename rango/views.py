@@ -1,13 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.shortcuts import render
 
 def index(request):
 	# return HttpResponse("Rango says hey there partner!"
 	# 	+ "</br><a href='/rango/about/'>About</a>")
 	# Construct a dictionary to pass to themplate engine as its context
 	# Note the key boldmessage matches to {{ boldmessage }} in the template!
-	context_dict = {'boldmessage': 'crunchy, creamy, cookie, candy, cupcake!'}
+	context_dict = {'boldmessage': 'Crunchy, creamy, cookie, candy, cupcake!'}
 
 	# Return a rendered response to send to the client.
 	# We make use of the shortcut function to make our lives easier.
@@ -15,5 +14,5 @@ def index(request):
 	return render(request, 'rango/index.html', context=context_dict)
 
 def about(request):
-	return HttpResponse("Rango says here is the about page."
-		+ "</br><a href='/rango/'>Index</a>")
+	context_dict = {'MEDIA_URL': '/media/'}
+	return render(request, 'rango/about.html', context=context_dict)
